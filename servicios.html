@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- BOOTSTRAP LINK -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+	<!-- LINK CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+
+	<title>Servicios</title>
+<style>
+    .styled-table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+.styled-table thead tr {
+    background-color: #009879;
+    color: #ffffff;
+    text-align: left;
+}
+.styled-table th,
+.styled-table td {
+    padding: 12px 15px;
+}
+.styled-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.styled-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+.styled-table tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+}
+.styled-table tbody tr.active-row {
+    font-weight: bold;
+    color: #009879;
+}
+
+
+</style>
+
+
+
+
+
+</head>
+<body>
+
+    <header>
+        <div class="contenedorheader">
+    
+            <a href="/index.html">
+            <img class="logonav" src="/img/ucblogo.png" alt=""></a>
+            <p class="titulopagweb"> Peluqueria 3 patitas</p>
+            <nav>
+                <a class="link" href="/index.html">Home</a>
+                <a class="link" href="/servicios.html">Servicios</a>
+                <a class="link" href="/articulos.html">Articulos</a>
+                <a class="link" href="/horarios.html">Horarios</a>
+                <a class="link" href="/contactos.html">Contactos</a>
+    
+            </nav>
+        </div>
+    
+    
+    </header>
+
+
+<center>
+<h1>Peluqueria 3 patitas</h1>
+<h2>Añade servicios a la tabla</h2>
+
+
+<form method="post" id="form">
+
+    <div class="form-group row">
+        <label for="inputEmail3" class="col-sm-2 col-form-label">Servicio</label>
+        <div class="col-sm-10">
+          <input type="email" class="form-control" id="servicioF" name="servicioF" placeholder="Tipo servicio">
+        </div>
+    </div>
+    <br>
+    <div class="form-group row">
+        <label for="inputEmail3" class="col-sm-2 col-form-label">Duración [min]</label>
+        <div class="col-sm-10">
+          <input type="email" class="form-control" id="duracionF" name="duracionF" placeholder="Duración del servicio [min]">
+        </div>
+    </div>
+    <br>
+    <div class="form-group row">
+        <label for="inputEmail3" class="col-sm-2 col-form-label">Costo</label>
+        <div class="col-sm-10">
+          <input type="email" class="form-control" id="costoF" name="costoF" placeholder="Costo del servicio[Bs]">
+        </div>
+    </div>
+    <br>
+
+    <button type="button" id="add">Añadir</button>
+    <input type="reset" value="Limpiar">
+</form>
+
+
+<table id="tablaS" class="styled-table">
+    <thead>
+      <tr>
+        <th>Servicio</th>
+        <th>Duración [min]</th>
+        <th>Costo [Bs]</th>
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+</center>
+</body>
+<script>
+   var addButton = document.getElementById('add');
+    var table = document.getElementById('tablaS');
+
+    addButton.addEventListener('click', function() {
+    var name = document.getElementById('servicioF').value;
+    var email = document.getElementById('duracionF').value;
+    var phone = document.getElementById('costoF').value;
+    if(name != "" && email != "" && phone != ""){
+        var newRow = document.createElement('tr');
+        var newCell1 = document.createElement('td');
+        var newCell2 = document.createElement('td');
+        var newCell3 = document.createElement('td');
+        
+        newCell1.appendChild(document.createTextNode(name));
+        newCell2.appendChild(document.createTextNode(email));
+        newCell3.appendChild(document.createTextNode(phone));
+        
+        newRow.appendChild(newCell1);
+        newRow.appendChild(newCell2);
+        newRow.appendChild(newCell3);
+        
+        table.getElementsByTagName('tbody')[0].appendChild(newRow);
+    } else {
+        alert("Campos vacios");
+    }
+    document.getElementById("form").reset();
+    });
+    
+  </script>
+</html>
